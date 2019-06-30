@@ -1,0 +1,26 @@
+author: Björn Bilger <software@bbilger.com>
+type: lib
+description: Arduino Adafruit EDP library
+version: 2.1.1-test
+platforms: [esp8266, esp32]
+
+sources:
+  - src
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/arduino-adafruit-gfx
+  - origin: https://github.com/mongoose-os-libs/arduino-spi
+
+tags:
+  - c
+  - arduino
+  - adafruit
+  - e-ink
+  - e-paper
+  - docs:drivers:IL0373 SPI
+  - docs:drivers:IL0398 SPI
+  - docs:drivers:IL91874 SPI
+  - docs:drivers:SSD1608 SPI
+  - docs:drivers:SSD1675 SPI
+
+manifest_version: 2017-09-29
