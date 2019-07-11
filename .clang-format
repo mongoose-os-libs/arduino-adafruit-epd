@@ -1,0 +1,8 @@
+# mongoose-os: https://github.com/cesanta/mongoose-os/blob/master/.clang-format
+BasedOnStyle: Google
+AllowShortFunctionsOnASingleLine: false
+SpaceAfterCStyleCast: true
+PointerBindsToType: false
+DerivePointerBinding: false
+# custom
+ColumnLimit: 160

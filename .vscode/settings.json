@@ -1,0 +1,17 @@
+{
+  /*
+   * make C/C++ IntelliSense happier
+   */
+  "C_Cpp.default.intelliSenseMode": "clang-x64",
+  "C_Cpp.default.cStandard": "c99",
+  "C_Cpp.default.cppStandard": "c++11",
+  "C_Cpp.default.defines": [
+    "ARDUINO=100",
+    "ESP32"
+  ],
+  "C_Cpp.default.includePath": [
+    "${workspaceFolder}/build/gen",
+    "${workspaceFolder}/deps/**",
+    "${workspaceFolder}/include"
+  ],
+}

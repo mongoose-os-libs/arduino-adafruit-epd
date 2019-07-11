@@ -11,36 +11,30 @@ includes:
   - include
 
 config_schema:
-  - ["aepd.spi_cs_index_sd", "i", 0, {title: "spi.cs*_gpio index for the SD card, 0, 1 or 2"}]
-  - ["aepd.spi_cs_index_sram", "i", 1, {title: "spi.cs*_gpio index for the SRAM, 0, 1 or 2"}]
-  - ["aepd.spi_cs_index_epd", "i", 2, {title: "spi.cs*_gpio index for the EDP, 0, 1 or 2"}]
-  - ["aepd.epd_dc_pin", "i", -1, {title: "EPD DC pin"}]
-  - ["aepd.epd_reset_pin", "i", -1, {title: "EPD reset pin"}]
-  - ["aepd.epd_busy_pin", "i", -1, {title: "EPD busy pin"}]
+  - ["aepd", "o", {title: "Arduino Adafruit EDP settings"}]
+  - ["aepd.debug", "b", true, {title: "true"}]
+  - ["aepd.enable", "b", false, {title: "enable the display when the library loads"}]
+  - ["aepd.begin", "b", true, {title: "begin the display when the library loads"}]
+  - ["aepd.driver", "s", "", {title: "the driver IL0373, IL0398, IL91874, SSD1608 or SSD1675"}]
+  - ["aepd.width", "i", -1, {title: "display width in pixels"}]
+  - ["aepd.height", "i", -1, {title: "display height in pixels"}]
+  - ["aepd.epd_spi_cs_index", "i", -1, {title: "spi.csX_gpio index for the EDP, 0, 1 or 2"}]
+  - ["aepd.sram_spi_cs_index", "i", -1, {title: "spi.csX_gpio index for the SRAM, 0, 1 or 2, or -1 to not use SRAM"}]
+  - ["aepd.epd_dc_gpio", "i", -1, {title: "EPD DC GPIO"}]
+  - ["aepd.epd_reset_gpio", "i", -1, {title: "EPD reset GPIO"}]
+  - ["aepd.epd_busy_gpio", "i", -1, {title: "EPD busy GPIO"}]
 
-conds:
-  - when: mos.platform == "esp32"
-    apply:
-      config_schema:
-        - ["spi.enable", true]
-        - ["spi.mosi_gpio", 18]
-        - ["spi.miso_gpio", 19]
-        - ["spi.sclk_gpio", 5]
-        - ["spi.cs0_gpio", 14] # SD card
-        - ["spi.cs1_gpio", 32] # SRAM
-        - ["spi.cs2_gpio", 15] # EPD
-        - ["aepd.epd_dc_pin", 33] # EPD DC pin
-  - when: mos.platform == "esp8266"
-    apply:
-      config_schema:
-        - ["spi.enable", true]
-        - ["spi.mosi_gpio", 13]
-        - ["spi.miso_gpio", 12]
-        - ["spi.sclk_gpio", 14]
-        - ["spi.cs0_gpio", 2] # SD card
-        - ["spi.cs1_gpio", 16] # SRAM
-        - ["spi.cs2_gpio", 0] # EPD
-        - ["aepd.epd_dc_pin", 15] # EPD DC pin
+# GPIO
+# ----
+# esp32 (feather wing) + EPD feather wing
+#   SPI: MOSI=18, MISO=19, SCLK=5
+#     CS: EPD=15, SRAM=32, SD=14
+#   DC: EPD=33
+#
+# esp8266 (feather wing) + EPD feather wing
+#   SPI: MOSI=13, MISO=12, SCLK=14
+#     CS: EPD=0, SRAM=16, SD=2
+#   DC: EPD=15
 
 libs:
   - origin: https://github.com/mongoose-os-libs/arduino-adafruit-gfx
