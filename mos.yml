@@ -52,4 +52,8 @@ tags:
   - docs:drivers:SSD1608 SPI
   - docs:drivers:SSD1675 SPI
 
+# this must be disabled since Adafruit*.cpp contains quite some overloaded methods with named params
+cxxflags:
+  - "-Wno-unused-parameter"
+
 manifest_version: 2017-09-29
