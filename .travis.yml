@@ -9,7 +9,7 @@ addons:
     sources:
       - sourceline: "ppa:mongoose-os/mos"
     packages:
-      - mos-latest
+      - mos
 
 script:
   - mos version
