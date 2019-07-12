@@ -1,13 +1,10 @@
-# Adafruit EPD Library [![Build Status](https://travis-ci.com/adafruit/Adafruit_EPD.svg?branch=master)](https://travis-ci.com/adafruit/Adafruit_EPD)
+# Adafruit E-Paper / E-Ink Library for Mongoose OS
 
-<img src="https://cdn-shop.adafruit.com/970x728/3625-03.jpg" height="300"/>
+This is a port of or rahter a wrapper around the [Adafruit EPD Library](https://github.com/adafruit/Adafruit_EPD) for [Mongoose OS](https://mongoose-os.com/).
 
-This is a library for the Adafruit E-paper displays:
-  * https://www.adafruit.com/products/3625
- 
-Check out the links above for our tutorials and wiring diagrams. These devices use SPI to communicate
+[![Build Status](https://img.shields.io/travis/bbilger/mgos-arduino-adafruit-epd.svg?maxAge=60&style=flat-square)](https://travis-ci.org/bbilger/mgos-arduino-adafruit-epd)
 
-Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
+Please check [Adafruit EPD Library](https://github.com/adafruit/Adafruit_EPD) for additional information
+and also please note the original [README](README_ORIG.md).
 
-Written by Dean Miller for Adafruit Industries.
-MIT license, all text above must be included in any redistribution
+This library is - like the original one - is licensed under [MIT license](LICENSE).

@@ -53,6 +53,7 @@ tags:
   - docs:drivers:SSD1675 SPI
 
 # this must be disabled since Adafruit*.cpp contains quite some overloaded methods with named params
+# and I'd prefer to keep them unchanged
 cxxflags:
   - "-Wno-unused-parameter"
 
