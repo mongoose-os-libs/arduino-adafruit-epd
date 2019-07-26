@@ -1,2 +1,6 @@
 build/*
 deps/*
+examples/**/build/*
+examples/**/deps/*
+#exclude core dumps
+examples/**/core-*

@@ -1,0 +1,34 @@
+author: Björn Bilger <software@bbilger.com>
+description: Arduino Adafruit EPD usage example in JS
+platforms: [esp8266, esp32]
+version: 0.0.1
+libs_version: ${mos.version}
+modules_version: ${mos.version}
+mongoose_os_version: ${mos.version}
+
+sources:
+  - src
+filesystem:
+  - fs
+
+
+config_schema:
+  - ["spi.enable", true]
+  - ["spi.mosi_gpio", 18]
+  - ["spi.miso_gpio", 19]
+  - ["spi.sclk_gpio", 5]
+  - ["spi.cs0_gpio", 15] # EPD
+  - ["aepd.enable", true]
+  - ["aepd.width", 250]
+  - ["aepd.height", 122]
+  - ["aepd.driver", "SSD1675"]
+  - ["aepd.epd_spi_cs_index", 0]
+  - ["aepd.sram_spi_cs_index", 1]
+  - ["aepd.epd_dc_gpio", 33]
+
+libs:
+  - origin: https://github.com/mongoose-os-libs/mjs
+  - origin: ../../../mgos-arduino-adafruit-epd
+
+
+manifest_version: 2017-05-18

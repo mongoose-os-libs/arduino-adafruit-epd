@@ -7,7 +7,7 @@ static struct Adafruit_EPD *s_global_epd;
 
 // TODO rename to mgos_arduino_adafruit_epd_init once it's in mongoose-os-libs as "arduino_adafruit_edp"
 bool mgos_mgos_arduino_adafruit_epd_init(void) {
-  if (mgos_sys_config_get_aepd_enable()) {
+  if (!mgos_sys_config_get_aepd_enable()) {
     LOG(LL_INFO, ("not enabled"));
     return true;
   }

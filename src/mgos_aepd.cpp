@@ -4,6 +4,10 @@
 #include "mgos.h"
 #include "mgos_config.h"
 
+#ifdef MGOS_HAVE_MJS
+#include "mjs.h"
+#endif
+
 extern "C" {
 
 // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -104,6 +108,113 @@ Adafruit_EPD *mgos_aepd_create(const struct mgos_config_aepd *cfg) {
   }
   return epd;
 }
+
+#ifdef MGOS_HAVE_MJS
+
+struct mgos_aepd_mjs_int16_pair {
+  int16_t first;
+  int16_t second;
+};
+
+struct mgos_aepd_mjs_int16_pair *mgos_aepd_mjs_create_int16_pair(int16_t first, int16_t second) {
+  struct mgos_aepd_mjs_int16_pair *p = (struct mgos_aepd_mjs_int16_pair *) malloc(sizeof(struct mgos_aepd_mjs_int16_pair));
+  if (p == nullptr) {
+    LOG(LL_ERROR, ("oom"));
+  }
+  p->first = first;
+  p->second = second;
+  return p;
+}
+
+void mgos_aepd_mjs_free_int16_pair(struct mgos_aepd_mjs_int16_pair *pair) {
+  if (pair != nullptr) {
+    free(pair);
+  }
+}
+
+static const struct mjs_c_struct_member mgos_aepd_int16_pair_descr[] = {
+    {"first", offsetof(struct mgos_aepd_mjs_int16_pair, first), MJS_STRUCT_FIELD_TYPE_INT16, NULL},
+    {"second", offsetof(struct mgos_aepd_mjs_int16_pair, second), MJS_STRUCT_FIELD_TYPE_INT16, NULL},
+    {NULL, 0, MJS_STRUCT_FIELD_TYPE_INVALID, NULL},
+};
+
+const struct mjs_c_struct_member *mgos_aepd_get_int16_pair_descr(void) {
+  return mgos_aepd_int16_pair_descr;
+}
+
+void mgos_aepd_fill_circle_helper_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, int16_t r, uint8_t cornername, int16_t delta,
+                                      uint16_t color) {
+  mgos_aepd_fill_circle_helper(epd, coordinates->first, coordinates->second, r, cornername, delta, color);
+}
+
+void mgos_aepd_draw_triangle_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates0, struct mgos_aepd_mjs_int16_pair *coordinates1,
+                                 struct mgos_aepd_mjs_int16_pair *coordinates2, uint16_t color) {
+  mgos_aepd_draw_triangle(epd, coordinates0->first, coordinates0->second, coordinates1->first, coordinates1->second, coordinates2->first, coordinates2->second,
+                          color);
+}
+
+void mgos_aepd_fill_triangle_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates0, struct mgos_aepd_mjs_int16_pair *coordinates1,
+                                 struct mgos_aepd_mjs_int16_pair *coordinates2, uint16_t color) {
+  mgos_aepd_fill_triangle(epd, coordinates0->first, coordinates0->second, coordinates1->first, coordinates1->second, coordinates2->first, coordinates2->second,
+                          color);
+}
+
+void mgos_aepd_draw_round_rect_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates0, struct mgos_aepd_mjs_int16_pair *dimension, int16_t radius,
+                                   uint16_t color) {
+  mgos_aepd_draw_round_rect(epd, coordinates0->first, coordinates0->second, dimension->first, dimension->second, radius, color);
+}
+
+void mgos_aepd_fill_round_rect_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates0, struct mgos_aepd_mjs_int16_pair *dimension, int16_t radius,
+                                   uint16_t color) {
+  mgos_aepd_fill_round_rect(epd, coordinates0->first, coordinates0->second, dimension->first, dimension->second, radius, color);
+}
+
+void mgos_aepd_draw_bitmap_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint8_t *bitmap, struct mgos_aepd_mjs_int16_pair *dimension,
+                               uint16_t color) {
+  mgos_aepd_draw_bitmap(epd, coordinates->first, coordinates->second, bitmap, dimension->first, dimension->second, color);
+}
+
+void mgos_aepd_draw_bitmap_bg_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint8_t *bitmap, struct mgos_aepd_mjs_int16_pair *dimension,
+                                  uint16_t color, uint16_t bg) {
+  mgos_aepd_draw_bitmap_bg(epd, coordinates->first, coordinates->second, bitmap, dimension->first, dimension->second, color, bg);
+}
+
+void mgos_aepd_draw_x_bitmap_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint8_t *bitmap, struct mgos_aepd_mjs_int16_pair *dimension,
+                                 uint16_t color) {
+  mgos_aepd_draw_x_bitmap(epd, coordinates->first, coordinates->second, bitmap, dimension->first, dimension->second, color);
+}
+
+void mgos_aepd_draw_grayscale_bitmap_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint8_t *bitmap,
+                                         struct mgos_aepd_mjs_int16_pair *dimension) {
+  mgos_aepd_draw_grayscale_bitmap(epd, coordinates->first, coordinates->second, bitmap, dimension->first, dimension->second);
+}
+
+void mgos_aepd_draw_grayscale_bitmap_masked_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint8_t *bitmap, uint8_t *mask,
+                                                struct mgos_aepd_mjs_int16_pair *dimension) {
+  mgos_aepd_draw_grayscale_bitmap_masked(epd, coordinates->first, coordinates->second, bitmap, mask, dimension->first, dimension->second);
+}
+
+void mgos_aepd_draw_rgb_bitmap_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint16_t *bitmap,
+                                   struct mgos_aepd_mjs_int16_pair *dimension) {
+  mgos_aepd_draw_rgb_bitmap(epd, coordinates->first, coordinates->second, bitmap, dimension->first, dimension->second);
+}
+
+void mgos_aepd_draw_rgb_bitmap_masked_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, uint16_t *bitmap, uint8_t *mask,
+                                          struct mgos_aepd_mjs_int16_pair *dimension) {
+  mgos_aepd_draw_rgb_bitmap_masked(epd, coordinates->first, coordinates->second, bitmap, mask, dimension->first, dimension->second);
+}
+
+void mgos_aepd_draw_char_mjs(Adafruit_EPD *epd, struct mgos_aepd_mjs_int16_pair *coordinates, unsigned char c, uint16_t color, uint16_t bg, uint8_t size) {
+  mgos_aepd_draw_char(epd, coordinates->first, coordinates->second, c, color, bg, size);
+}
+
+void mgos_aepd_get_text_bounds_mjs(Adafruit_EPD *epd, char *string, struct mgos_aepd_mjs_int16_pair *coordinates, struct mgos_aepd_mjs_int16_pair *coordinates1,
+                                   struct mgos_aepd_mjs_int16_pair *dimension) {
+  mgos_aepd_get_text_bounds(epd, string, coordinates->first, coordinates->second, &coordinates1->first, &coordinates1->second, &dimension->first,
+                            &dimension->second);
+}
+
+#endif
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -328,91 +439,49 @@ void mgos_aepd_fill_round_rect(Adafruit_EPD *epd, int16_t x0, int16_t y0, int16_
   epd->fillRoundRect(x0, y0, w, h, radius, color);
 }
 
-void mgos_aepd_draw_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color) {
+void mgos_aepd_draw_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawBitmap(x, y, bitmap, w, h, color);
 }
 
-void mgos_aepd_draw_bitmap_a_bg(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color, uint16_t bg) {
+void mgos_aepd_draw_bitmap_bg(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color, uint16_t bg) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawBitmap(x, y, bitmap, w, h, color, bg);
 }
 
-void mgos_aepd_draw_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawBitmap(x, y, bitmap, w, h, color);
-}
-
-void mgos_aepd_draw_bitmap_p_bg(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color, uint16_t bg) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawBitmap(x, y, bitmap, w, h, color, bg);
-}
-
-void mgos_aepd_draw_x_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color) {
+void mgos_aepd_draw_x_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawXBitmap(x, y, bitmap, w, h, color);
 }
 
-void mgos_aepd_draw_grayscale_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h) {
+void mgos_aepd_draw_grayscale_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawGrayscaleBitmap(x, y, bitmap, w, h);
 }
 
-void mgos_aepd_draw_grayscale_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawGrayscaleBitmap(x, y, bitmap, w, h);
-}
-
-void mgos_aepd_draw_grayscale_bitmap_a_m(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], const uint8_t mask[], int16_t w, int16_t h) {
+void mgos_aepd_draw_grayscale_bitmap_masked(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, uint8_t *mask, int16_t w, int16_t h) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawGrayscaleBitmap(x, y, bitmap, mask, w, h);
 }
 
-void mgos_aepd_draw_grayscale_bitmap_p_m(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, uint8_t *mask, int16_t w, int16_t h) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawGrayscaleBitmap(x, y, bitmap, mask, w, h);
-}
-
-void mgos_aepd_draw_rgb_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint16_t bitmap[], int16_t w, int16_t h) {
+void mgos_aepd_draw_rgb_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, int16_t w, int16_t h) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
   epd->drawRGBBitmap(x, y, bitmap, w, h);
 }
 
-void mgos_aepd_draw_rgb_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, int16_t w, int16_t h) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawRGBBitmap(x, y, bitmap, w, h);
-}
-
-void mgos_aepd_draw_rgb_bitmap_a_m(Adafruit_EPD *epd, int16_t x, int16_t y, const uint16_t bitmap[], const uint8_t mask[], int16_t w, int16_t h) {
-  if (!mgos_aepd_check_init(epd)) {
-    return;
-  }
-  epd->drawRGBBitmap(x, y, bitmap, mask, w, h);
-}
-
-void mgos_aepd_draw_rgb_bitmap_p_m(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, uint8_t *mask, int16_t w, int16_t h) {
+void mgos_aepd_draw_rgb_bitmap_masked(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, uint8_t *mask, int16_t w, int16_t h) {
   if (!mgos_aepd_check_init(epd)) {
     return;
   }
@@ -471,7 +540,7 @@ void mgos_aepd_cp437(Adafruit_EPD *epd, bool x) {
 // TODO
 // void mgos_aepd_set_font(const GFXfont *f);
 
-void mgos_aepd_get_text_bounds(Adafruit_EPD *epd, char *string, int16_t x, int16_t y, int16_t *x1, int16_t *y1, uint16_t *w, uint16_t *h) {
+void mgos_aepd_get_text_bounds(Adafruit_EPD *epd, char *string, int16_t x, int16_t y, int16_t *x1, int16_t *y1, int16_t *w, int16_t *h) {
   if (!mgos_aepd_check_init(epd)) {
     *x1 = -1;
     *y1 = -1;
@@ -479,7 +548,10 @@ void mgos_aepd_get_text_bounds(Adafruit_EPD *epd, char *string, int16_t x, int16
     *h = -1;
     return;
   }
-  epd->getTextBounds(string, x, y, x1, y1, w, h);
+  uint16_t _w, _h;
+  epd->getTextBounds(string, x, y, x1, y1, &_w, &_h);
+  *w = _w;
+  *h = _h;
 }
 
 int16_t mgos_aepd_height(Adafruit_EPD *epd) {

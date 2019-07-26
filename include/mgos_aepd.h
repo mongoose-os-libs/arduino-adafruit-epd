@@ -91,31 +91,19 @@ void mgos_aepd_draw_round_rect(Adafruit_EPD *epd, int16_t x0, int16_t y0, int16_
 
 void mgos_aepd_fill_round_rect(Adafruit_EPD *epd, int16_t x0, int16_t y0, int16_t w, int16_t h, int16_t radius, uint16_t color);
 
-void mgos_aepd_draw_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color);
+void mgos_aepd_draw_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color);
 
-void mgos_aepd_draw_bitmap_a_bg(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color, uint16_t bg);
+void mgos_aepd_draw_bitmap_bg(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color, uint16_t bg);
 
-void mgos_aepd_draw_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color);
+void mgos_aepd_draw_x_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color);
 
-void mgos_aepd_draw_bitmap_p_bg(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h, uint16_t color, uint16_t bg);
+void mgos_aepd_draw_grayscale_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h);
 
-void mgos_aepd_draw_x_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h, uint16_t color);
+void mgos_aepd_draw_grayscale_bitmap_masked(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, uint8_t *mask, int16_t w, int16_t h);
 
-void mgos_aepd_draw_grayscale_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], int16_t w, int16_t h);
+void mgos_aepd_draw_rgb_bitmap(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, int16_t w, int16_t h);
 
-void mgos_aepd_draw_grayscale_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, int16_t w, int16_t h);
-
-void mgos_aepd_draw_grayscale_bitmap_a_m(Adafruit_EPD *epd, int16_t x, int16_t y, const uint8_t bitmap[], const uint8_t mask[], int16_t w, int16_t h);
-
-void mgos_aepd_draw_grayscale_bitmap_p_m(Adafruit_EPD *epd, int16_t x, int16_t y, uint8_t *bitmap, uint8_t *mask, int16_t w, int16_t h);
-
-void mgos_aepd_draw_rgb_bitmap_a(Adafruit_EPD *epd, int16_t x, int16_t y, const uint16_t bitmap[], int16_t w, int16_t h);
-
-void mgos_aepd_draw_rgb_bitmap_p(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, int16_t w, int16_t h);
-
-void mgos_aepd_draw_rgb_bitmap_a_m(Adafruit_EPD *epd, int16_t x, int16_t y, const uint16_t bitmap[], const uint8_t mask[], int16_t w, int16_t h);
-
-void mgos_aepd_draw_rgb_bitmap_p_m(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, uint8_t *mask, int16_t w, int16_t h);
+void mgos_aepd_draw_rgb_bitmap_masked(Adafruit_EPD *epd, int16_t x, int16_t y, uint16_t *bitmap, uint8_t *mask, int16_t w, int16_t h);
 
 void mgos_aepd_draw_char(Adafruit_EPD *epd, int16_t x, int16_t y, unsigned char c, uint16_t color, uint16_t bg, uint8_t size);
 
@@ -134,11 +122,8 @@ void mgos_aepd_cp437(Adafruit_EPD *epd, bool x);
 // TODO
 // void mgos_aepd_set_font(const GFXfont *f);
 
-void mgos_aepd_get_text_bounds(Adafruit_EPD *epd, char *string, int16_t x, int16_t y, int16_t *x1, int16_t *y1, uint16_t *w, uint16_t *h);
-
-int16_t mgos_aepd_X(Adafruit_EPD *epd);
-
-size_t mgos_aepd_write(Adafruit_EPD *epd, uint8_t x);
+// note: changed width&height type from uint16_t to int16_t
+void mgos_aepd_get_text_bounds(Adafruit_EPD *epd, char *string, int16_t x, int16_t y, int16_t *x1, int16_t *y1, int16_t *w, int16_t *h);
 
 int16_t mgos_aepd_height(Adafruit_EPD *epd);
 
