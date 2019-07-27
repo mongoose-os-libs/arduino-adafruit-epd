@@ -83,7 +83,7 @@ static void draw(void) {
   currX = 0;
   currY = currY + gfxPrimDim + gfxPrimOffset;
 
-  char *header = "Made with <3 in Berlin";
+  const char *header = "Made with <3 in Berlin";
   epd->setTextSize(1);
 
   int16_t ftb_x;
@@ -91,7 +91,7 @@ static void draw(void) {
   uint16_t ftb_w;
   uint16_t ftb_h;
 
-  epd->getTextBounds(header, 0, 0, &ftb_x, &ftb_y, &ftb_w, &ftb_h);
+  epd->getTextBounds((char *) header, 0, 0, &ftb_x, &ftb_y, &ftb_w, &ftb_h);
   epd->setCursor(epd->width() - ftb_w, epd->height() - ftb_h);
   epd->print(header);
 
