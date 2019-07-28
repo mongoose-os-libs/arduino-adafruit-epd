@@ -75,7 +75,7 @@ It's optional to setup the display using the following config but unless you are
 | aepd.epd_reset_gpio    | `int`    | `-1`    | `false`  | EPD reset GPIO or -1 |
 | aepd.debug             | `bool`   | `false` | -        | At the moment it only prevents a bootloop on misconfiguration.
 
-If you whish to not setup the display via configuration. Then you can set it up in C via `mgos_aepd_create`, in C++ by directly instantiating a concrete subclass of `Adafruit_EPD` (e.g. `Adafruit_SSD1675`), and in JS you are on your own but you can for example "ffi" `mgos_aepd_create`.
+If you whish to not setup the display via configuration, then you can set it up in C via `mgos_aepd_create`, in C++ by directly instantiating a concrete subclass of `Adafruit_EPD` (e.g. `Adafruit_SSD1675`), and in JS you are on your own but you can for example "ffi" `mgos_aepd_create`.
 
  ## License
 
