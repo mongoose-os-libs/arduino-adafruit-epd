@@ -1,4 +1,4 @@
-author: Björn Bilger <software@bbilger.com>
+author: Bjoern Bilger <software@bbilger.com>
 type: lib
 description: Arduino Adafruit EDP library
 version: 2.1.1-test
@@ -21,8 +21,8 @@ config_schema:
   - ["aepd.epd_spi_cs_index", "i", -1, {title: "spi.csX_gpio index for the EDP, 0, 1 or 2"}]
   - ["aepd.sram_spi_cs_index", "i", -1, {title: "spi.csX_gpio index for the SRAM, 0, 1 or 2, or -1 to not use SRAM"}]
   - ["aepd.epd_dc_gpio", "i", -1, {title: "EPD DC GPIO"}]
-  - ["aepd.epd_reset_gpio", "i", -1, {title: "EPD reset GPIO"}]
-  - ["aepd.epd_busy_gpio", "i", -1, {title: "EPD busy GPIO"}]
+  - ["aepd.epd_reset_gpio", "i", -1, {title: "EPD reset GPIO or -1"}]
+  - ["aepd.epd_busy_gpio", "i", -1, {title: "EPD busy GPIO or -1"}]
 
 # GPIO
 # ----

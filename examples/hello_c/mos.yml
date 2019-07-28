@@ -1,7 +1,8 @@
-author: Björn Bilger <software@bbilger.com>
+author: Bjoern Bilger <software@bbilger.com>
 description: Arduino Adafruit EPD usage example in C
 platforms: [esp8266, esp32]
 version: 0.0.1
+
 libs_version: ${mos.version}
 modules_version: ${mos.version}
 mongoose_os_version: ${mos.version}
@@ -9,23 +10,45 @@ mongoose_os_version: ${mos.version}
 sources:
   - src
 
-
-config_schema:
-  - ["spi.enable", true]
-  - ["spi.mosi_gpio", 18]
-  - ["spi.miso_gpio", 19]
-  - ["spi.sclk_gpio", 5]
-  - ["spi.cs0_gpio", 15] # EPD
-  - ["aepd.enable", true]
-  - ["aepd.width", 250]
-  - ["aepd.height", 122]
-  - ["aepd.driver", "SSD1675"]
-  - ["aepd.epd_spi_cs_index", 0]
-  - ["aepd.sram_spi_cs_index", 1]
-  - ["aepd.epd_dc_gpio", 33]
+conds:
+  # esp32 (feather wing) + EPD feather wing
+  # => adjust if you use a diff setup!
+  - when: mos.platform == "esp32"
+    apply:
+      config_schema:
+        - ["spi.enable", true]
+        - ["spi.mosi_gpio", 18]
+        - ["spi.miso_gpio", 19]
+        - ["spi.sclk_gpio", 5]
+        - ["spi.cs0_gpio", 15] # EPD
+        # - ["spi.cs1_gpio", 32] # SRAM - optional!
+        - ["aepd.enable", true]
+        - ["aepd.width", 250]
+        - ["aepd.height", 122]
+        - ["aepd.driver", "SSD1675"]
+        - ["aepd.epd_spi_cs_index", 0]
+        - ["aepd.sram_spi_cs_index", 1]
+        - ["aepd.epd_dc_gpio", 33]
+  # esp8266 (feather wing) + EPD feather wing
+  # => adjust if you use a diff setup!
+  - when: mos.platform == "esp8266"
+    apply:
+      config_schema:
+        - ["spi.enable", true]
+        - ["spi.mosi_gpio", 13]
+        - ["spi.miso_gpio", 12]
+        - ["spi.sclk_gpio", 14]
+        - ["spi.cs0_gpio", 0] # EPD
+        # - ["spi.cs1_gpio", 16] # SRAM
+        - ["aepd.enable", true]
+        - ["aepd.width", 250]
+        - ["aepd.height", 122]
+        - ["aepd.driver", "SSD1675"]
+        - ["aepd.epd_spi_cs_index", 0]
+        - ["aepd.sram_spi_cs_index", 1]
+        - ["aepd.epd_dc_gpio", 15]
 
 libs:
   - origin: ../../../mgos-arduino-adafruit-epd
-
 
 manifest_version: 2017-05-18
