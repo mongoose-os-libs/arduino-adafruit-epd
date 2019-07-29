@@ -1,7 +1,8 @@
 author: Bjoern Bilger <software@bbilger.com>
 type: lib
 description: Arduino Adafruit EDP library
-version: 2.1.1-test
+# <Adafruit_EPD version>-<this wrapper lib version>
+version: 0.9.0
 platforms: [esp8266, esp32]
 
 sources:

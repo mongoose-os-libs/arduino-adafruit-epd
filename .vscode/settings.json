@@ -1,4 +1,16 @@
 {
+  "files.watcherExclude": {
+    "**/.git": true,
+    "build": true,
+    "examples/**/build": true,
+    "**/deps": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "build": true,
+    "examples/**/build": true,
+    "**/deps": true
+  },
   /*
    * make C/C++ IntelliSense happier
    */

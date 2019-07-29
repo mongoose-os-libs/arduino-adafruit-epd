@@ -49,6 +49,6 @@ conds:
         - ["aepd.epd_dc_gpio", 15]
 
 libs:
-  - origin: ../../../mgos-arduino-adafruit-epd
+  - origin: https://github.com/bbilger/mgos-arduino-adafruit-epd
 
 manifest_version: 2017-05-18

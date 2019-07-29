@@ -52,6 +52,6 @@ conds:
 
 libs:
   - origin: https://github.com/mongoose-os-libs/mjs
-  - origin: ../../../mgos-arduino-adafruit-epd
+  - origin: https://github.com/bbilger/mgos-arduino-adafruit-epd
 
 manifest_version: 2017-05-18

@@ -13,4 +13,4 @@ addons:
 
 script:
   - cd alien/build
-  - ./build_all.sh
+  - ./build_all_local.sh

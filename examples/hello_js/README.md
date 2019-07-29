@@ -30,6 +30,6 @@ libs:
 git checkout https://github.com/bbilger/mgos-arduino-adafruit-epd
 cd mgos-arduino-adafruit-epd/examples/hello_c
 
-mos build --clean --local --platform esp32 && mos flash && mos console
+mos build --platform esp32 && mos flash && mos console
 
 ```
