@@ -27,7 +27,7 @@ conds:
         - ["aepd.height", 122]
         - ["aepd.driver", "SSD1675"]
         - ["aepd.epd_spi_cs_index", 0]
-        - ["aepd.sram_spi_cs_index", 1]
+        # - ["aepd.sram_spi_cs_index", 1] # SRAM - optional!
         - ["aepd.epd_dc_gpio", 33]
   # esp8266 (feather wing) + EPD feather wing
   # => adjust if you use a diff setup!
@@ -45,7 +45,7 @@ conds:
         - ["aepd.height", 122]
         - ["aepd.driver", "SSD1675"]
         - ["aepd.epd_spi_cs_index", 0]
-        - ["aepd.sram_spi_cs_index", 1]
+       #  - ["aepd.sram_spi_cs_index", 1]
         - ["aepd.epd_dc_gpio", 15]
 
 libs:

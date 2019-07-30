@@ -7,9 +7,9 @@
   },
   "files.exclude": {
     "**/.git": true,
-    "build": true,
-    "examples/**/build": true,
-    "**/deps": true
+    "build/objs": true,
+    "examples/**/deps": true,
+    "examples/**/build": true
   },
   /*
    * make C/C++ IntelliSense happier
@@ -25,5 +25,5 @@
     "${workspaceFolder}/build/gen",
     "${workspaceFolder}/deps/**",
     "${workspaceFolder}/include"
-  ],
+  ]
 }
