@@ -16,9 +16,7 @@ let ArduinoAdafruitEpd = {
   // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   _createInt16Pair: ffi('void *mgos_aepd_mjs_create_int16_pair(int, int)'),
-
   _freeInt16Pair: ffi('void mgos_aepd_mjs_free_int16_pair(void *)'),
-
   _getInt16PairDescr: ffi('void *mgos_aepd_get_int16_pair_descr(void)'),
 
   _getGlobalEpd: ffi('void *mgos_aepd_get_global(void)'),
@@ -320,6 +318,7 @@ let ArduinoAdafruitEpd = {
 
       let rtr = { "x": cOut.first, "y": cOut.second, "w": dOut.first, "h": dOut.second };
 
+      ArduinoAdafruitEpd._freeInt16Pair(cInP);
       ArduinoAdafruitEpd._freeInt16Pair(cOutP);
       ArduinoAdafruitEpd._freeInt16Pair(dOutP);
 
