@@ -27,12 +27,12 @@ config_schema:
 
 # GPIO
 # ----
-# esp32 (feather wing) + EPD feather wing
+# esp32 (feather board) + EPD feather wing
 #   SPI: MOSI=18, MISO=19, SCLK=5
 #     CS: EPD=15, SRAM=32, SD=14
 #   DC: EPD=33
 #
-# esp8266 (feather wing) + EPD feather wing
+# esp8266 (feather board) + EPD feather wing
 #   SPI: MOSI=13, MISO=12, SCLK=14
 #     CS: EPD=0, SRAM=16, SD=2
 #   DC: EPD=15
