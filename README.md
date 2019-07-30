@@ -9,7 +9,7 @@ This is a port of or rather a wrapper around the [Adafruit EPD Library](https://
 Please check [Adafruit EPD Library](https://github.com/adafruit/Adafruit_EPD) for additional information
 and also please note the original [README](README_ORIG.md).
 
-Note: EPD stands for ePaper display.
+Note: EPD stands for e-paper display.
 
 ## Usage
 
@@ -28,7 +28,7 @@ There are three examples that show how to use this library:
 ```C
 #include "mgos_aepd.h"
 ...
-// get the ePaper display as configured in mos.yml
+// get the e-paper display as configured in mos.yml
 Adafruit_EPD *epd = mgos_aepd_get_global();
 // methods of the Adafruit_EPD C++ class
 // can be invoked through "mgos_aepd_<snake_case_method_name>(epd, ...)"
@@ -40,7 +40,7 @@ mgos_aepd_some_method(epd, ...);
 
 ```JavaScript
 load('api_arduino_adafruit_epd.js');
-// get the ePaper display as configured in mos.yml
+// get the e-paper display as configured in mos.yml
 let epd = ArduinoAdafruitEpd.createGlobal();
 // the JavaScript object has the same / most methods the original Adafruit_EPD C++ class has
 epd.someMethod(...);
@@ -52,7 +52,7 @@ epd.someMethod(...);
 #include "Adafruit_EPD.h"
 #include "mgos_aepd.h"
 
-// get the ePaper display as configured in mos.yml
+// get the e-paper display as configured in mos.yml
 Adafruit_EPD *epd = mgos_aepd_get_global();
 // nothing fancy here, since one can use the original Adafruit_EPD C++ class directly
 epd.someMethod(...);
