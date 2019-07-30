@@ -17,9 +17,9 @@ Note: EPD stands for e-paper display.
 
 There are three examples that show how to use this library:
 
-- [C usage example](https://github.com/bbilger/mgos-arduino-adafruit-epd/tree/master/examples/hello_c)
-- [JavaScript or rather mJS usage example](https://github.com/bbilger/mgos-arduino-adafruit-epd/tree/master/examples/hello_js)
-- [C++ usage example](https://github.com/bbilger/mgos-arduino-adafruit-epd/tree/master/examples/hello_cpp)
+- [C usage example](examples/hello_c/README.md)
+- [JavaScript or rather mJS usage example](examples/hello_js/README.md)
+- [C++ usage example](examples/hello_cpp/README.md)
 
 ![](alien/assets/example.jpg)
 
