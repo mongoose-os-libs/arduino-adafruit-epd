@@ -9,7 +9,9 @@ This is a port of or rather a wrapper around the [Adafruit EPD Library](https://
 Please check [Adafruit EPD Library](https://github.com/adafruit/Adafruit_EPD) for additional information
 and also please note the original [README](README_ORIG.md).
 
-Note: EPD stands for e-paper display.
+Notes:
+- this was moved from [bbilger/mgos-arduino-adafruit-epd](https://github.com/bbilger/mgos-arduino-adafruit-epd) which was forked from [adafruit/Adafruit_EPD](https://github.com/adafruit/Adafruit_EPD)
+- EPD stands for e-paper display.
 
 ## Usage
 
