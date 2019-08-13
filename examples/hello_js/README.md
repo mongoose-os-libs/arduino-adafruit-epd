@@ -19,8 +19,8 @@ Please note that the chosen configuration is for a [Adafruit HUZZAH ESP32](https
 git checkout https://github.com/bbilger/mgos-arduino-adafruit-epd
 cd mgos-arduino-adafruit-epd/examples/hello_js
 
-mos build --platform esp32 && mos flash && mos console
+mos build --local --platform esp32 && mos flash && mos console
 # or
-mos build --platform esp8266 && mos flash && mos console
+mos build --local --platform esp8266 && mos flash && mos console
 
 ```

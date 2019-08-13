@@ -18,13 +18,13 @@ function f_build_curr {
 
 function f_build_curr_example {
   # local build
-  sed -i 's|- origin: https://github.com/bbilger/mgos-arduino-adafruit-epd|- origin: ../../../mgos-arduino-adafruit-epd|' mos.yml
+  sed -i 's|- origin: https://github.com/mongoose-os-libs/arduino-adafruit-epd|- origin: ../../../arduino-adafruit-epd|' mos.yml
 
   f_build_curr
   local r_build=$?
 
   # and back to what it was
-  sed -i 's|- origin: ../../../mgos-arduino-adafruit-epd|- origin: https://github.com/bbilger/mgos-arduino-adafruit-epd|' mos.yml
+  sed -i 's|- origin: ../../../arduino-adafruit-epd|- origin: https://github.com/mongoose-os-libs/arduino-adafruit-epd|' mos.yml
 
   if [ $r_build -ne 0 ]
   then
