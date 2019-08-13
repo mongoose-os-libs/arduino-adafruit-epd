@@ -1,6 +1,5 @@
 # Adafruit E-Paper / E-Ink Library for Mongoose OS
 
-[![Build Status](https://img.shields.io/travis/bbilger/mgos-arduino-adafruit-epd.svg?maxAge=60&style=flat-square)](https://travis-ci.org/bbilger/mgos-arduino-adafruit-epd)
 [![License](https://img.shields.io/github/license/bbilger/mgos-arduino-adafruit-epd.svg?maxAge=60&style=flat-square&color=blue)](LICENSE)
 
 ## Introduction
