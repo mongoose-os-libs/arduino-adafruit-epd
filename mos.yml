@@ -38,8 +38,8 @@ config_schema:
 #   DC: EPD=15
 
 libs:
-  - origin: https://github.com/mongoose-os-libs/arduino-adafruit-gfx
-  - origin: https://github.com/mongoose-os-libs/arduino-spi
+  - location: https://github.com/mongoose-os-libs/arduino-adafruit-gfx
+  - location: https://github.com/mongoose-os-libs/arduino-spi
 
 tags:
   - c
