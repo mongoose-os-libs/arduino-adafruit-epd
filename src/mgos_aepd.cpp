@@ -120,10 +120,13 @@ Adafruit_EPD *mgos_aepd_create(const struct mgos_config_aepd *cfg) {
     epd = new Adafruit_IL91874(width, height, epd_dc_gpio, epd_reset_gpio, epd_spi_cs_gpio, sram_spi_cs_gpio, epd_busy_gpio);
   } else if (strcmp(driver, "SSD1608") == 0) {
     epd = new Adafruit_SSD1608(width, height, epd_dc_gpio, epd_reset_gpio, epd_spi_cs_gpio, sram_spi_cs_gpio, epd_busy_gpio);
+  } else if (strcmp(driver, "SSD1680") == 0) {
+    epd = new Adafruit_SSD1680(width, height, epd_dc_gpio, epd_reset_gpio, epd_spi_cs_gpio, sram_spi_cs_gpio, epd_busy_gpio);
   } else if (strcmp(driver, "SSD1675") == 0) {
     epd = new Adafruit_SSD1675(width, height, epd_dc_gpio, epd_reset_gpio, epd_spi_cs_gpio, sram_spi_cs_gpio, epd_busy_gpio);
   } else {
-    LOG(LL_ERROR, ("[check aepd.driver valid] expected: one of [\"IL0373\", \"IL0398\", \"IL91874\", \"SSD1608\" or \"SSD1675\") but was %s", driver));
+    LOG(LL_ERROR,
+        ("[check aepd.driver valid] expected: one of [\"IL0373\", \"IL0398\", \"IL91874\", \"SSD1608\" , \"SSD1680\"or \"SSD1675\") but was %s", driver));
     return nullptr;
   }
 
