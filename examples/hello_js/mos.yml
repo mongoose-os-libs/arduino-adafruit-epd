@@ -23,13 +23,13 @@ conds:
         - ["spi.miso_gpio", 19]
         - ["spi.sclk_gpio", 5]
         - ["spi.cs0_gpio", 15] # EPD
-        # - ["spi.cs1_gpio", 32] # SRAM - optional!
+        - ["spi.cs1_gpio", 32] # SRAM - optional!
         - ["aepd.enable", true]
         - ["aepd.width", 250]
         - ["aepd.height", 122]
-        - ["aepd.driver", "SSD1675"]
+        - ["aepd.driver", "SSD1680"]
         - ["aepd.epd_spi_cs_index", 0]
-        # - ["aepd.sram_spi_cs_index", 1] # SRAM - optional!
+        - ["aepd.sram_spi_cs_index", 1] # SRAM - optional!
         - ["aepd.epd_dc_gpio", 33]
   # esp8266 (feather wing) + EPD feather wing
   # => adjust if you use a diff setup!
